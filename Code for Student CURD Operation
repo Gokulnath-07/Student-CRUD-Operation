@@ -1,0 +1,85 @@
+# Single code for Student CURD Operation
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student CRUD</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+<h3 class="text-center mb-3">🎓 Student CRUD Operation</h3>
+
+<div class="card p-3 mb-3">
+<form id="form">
+<input type="hidden" id="i">
+
+<div class="row g-2">
+<input id="name" class="col-md-6 form-control" placeholder="Name" required>
+<input id="roll" class="col-md-6 form-control" placeholder="Roll No" required>
+<input id="reg" class="col-md-6 form-control" placeholder="Register No" required>
+<input id="branch" class="col-md-6 form-control" placeholder="Branch" required>
+<input id="dept" class="col-md-6 form-control" placeholder="Department" required>
+<input id="sec" class="col-md-6 form-control" placeholder="Section" required>
+<input id="college" class="col-md-6 form-control" placeholder="College" required>
+<input id="cgpa" class="col-md-6 form-control" placeholder="CGPA" required>
+</div>
+
+<button class="btn btn-primary w-100 mt-3">Save</button>
+</form>
+</div>
+
+<table class="table table-bordered table-striped text-center">
+<thead class="table-dark">
+<tr>
+<th>Name</th><th>Roll</th><th>Reg</th><th>Branch</th>
+<th>Dept</th><th>Sec</th><th>College</th><th>CGPA</th><th>Action</th>
+</tr>
+</thead>
+<tbody id="body"></tbody>
+</table>
+</div>
+
+<script>
+let s=JSON.parse(localStorage.getItem("s"))||[],
+b=id=>document.getElementById(id),
+f=["name","roll","reg","branch","dept","sec","college","cgpa"];
+
+show();
+
+document.getElementById("form").onsubmit=e=>{
+e.preventDefault();
+let o={}; f.forEach(x=>o[x]=b(x).value);
+b("i").value===""?s.push(o):s[b("i").value]=o;
+localStorage.setItem("s",JSON.stringify(s));
+swal("Success","Data saved","success");
+b("i").value="";
+e.target.reset();
+show();
+};
+
+function show(){
+body.innerHTML="";
+s.forEach((x,i)=>body.innerHTML+=`
+<tr>${f.map(k=>`<td>${x[k]}</td>`).join("")}
+<td>
+<button class="btn btn-warning btn-sm" onclick="edit(${i})">Edit</button>
+<button class="btn btn-danger btn-sm" onclick="del(${i})">Delete</button>
+</td></tr>`);
+}
+
+function edit(i){f.forEach(k=>b(k).value=s[i][k]);b("i").value=i}
+function del(i){
+swal({title:"Delete?",icon:"warning",buttons:true}).then(ok=>{
+if(ok){s.splice(i,1);localStorage.setItem("s",JSON.stringify(s));show()}
+});
+}
+</script>
+
+</body>
+</html>
