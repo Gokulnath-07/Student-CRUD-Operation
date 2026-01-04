@@ -6,13 +6,15 @@
 #WebDevelopment  
 
 🎓 Student CRUD Management System
-      A front-end web application developed using HTML5, Bootstrap 5, JavaScript (ES6) that demonstrates CRUD operations, client-side data persistence, and DOM manipulation.
-This project highlights practical exposure to modern web development, software engineering fundamentals, and UI/UX best practices, making it suitable for internship evaluations and fresher roles.
+
+      A front-end web application developed using HTML5, Bootstrap 5, JavaScript (ES6) that demonstrates CRUD operations, client-side data persistence, and DOM manipulation.This project highlights practical exposure to modern web development, software engineering fundamentals, and UI/UX best practices, making it suitable for internship evaluations and fresher roles.
 
 📄 Project Description
+
       The Student CRUD Management System is a browser-based student record management application designed to manage structured data efficiently. It allows users to create, read, update, and delete (CRUD) student information in real time with persistent storage using the Web Storage API (Local Storage).The project reflects strong understanding of frontend development concepts, event-driven programming, and clean, modular JavaScript, aligning with industry-level internship expectations.
 
 🚀 Key Features
+
 CRUD operations (Create, Read, Update, Delete)
 Client-side data storage using Local Storage
 Dynamic table rendering using JavaScript
